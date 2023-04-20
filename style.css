@@ -1,0 +1,29 @@
+canvas {
+    background-color: #f2f2f2;
+    border: 1px solid #d3d3d3;
+}
+
+.paddle {
+    background-color: #0095DD;
+}
+
+.ball {
+    background-color: #f44336;
+    border-radius: 50%;
+}
+
+#score {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#restart-button {
+    display: none;
+    margin: 0 auto;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 24px;
+}

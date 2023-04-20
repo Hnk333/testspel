@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <canvas id="canvas" width="480" height="320"></canvas>
+    <p id="score">0</p>
+    <p id="instructions">Use the arrow keys to move the paddle. Press spacebar to start</p>
+    <button id="restart-button">Restart</button>
+    <script src="game.js"></script>
+    <script>
+    // Define test cases
+    var testCases = [
+        // Test case #1: Check if gameStarted is initially false
+        function test_gameStarted_false() {
+            var expected = false;
+            var actual = gameStarted;
+            if (actual !== expected) {
+                return 'Failed: Expected ' + expected + ', but got ' + actual;
+            }
+            return 'Passed';
+        },
+        // Test case #2: Check if gameStarted is true after spacebar is pressed
+        function test_gameStarted_true() {
+            document.dispatchEvent(new KeyboardEvent('keydown', {'code': 'Space'}));
+            var expected = true;
+            var actual = gameStarted;
+            if (actual !== expected) {
+                return 'Failed: Expected ' + expected + ', but got ' + actual;
+            }
+            return 'Passed';
+        }
+    ];
+
+    // Execute tests
+    var numTests = testCases.length;
+    var passedTests = 0;
+    var testResults = [];
+    for (var i = 0; i < numTests; i++) {
+        var result = testCases[i]();
+        if (result === 'Passed') {
+            passedTests++;
+        }
+        testResults.push(result);
+    }
+
+    // Display test results
+    var resultString = '';
+    for (var i = 0; i < numTests; i++) {
+        resultString += 'Test ' + (i+1) + ': ' + testResults[i] + '\n';
+    }
+    resultString += '\nTOTAL PASSED: ' + passedTests + '/' + numTests;
+    console.log(resultString);
+    alert(resultString);
+    </script>
+</body>
+</html>
+
+<script>
+    // Add event listener to restart button
+    var restartButton = document.getElementById('restart-button');
+    restartButton.addEventListener('click', function() {
+        location.reload();
+    });
+    </script>
